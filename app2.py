@@ -77,6 +77,11 @@ st.markdown("---")
 
 st.subheader("📈 Trade Details")
 
+trade_type = st.selectbox(
+    "Trade Direction",
+    ["Buy", "Sell"]
+)
+
 entry = st.number_input(
     "Entry Price",
     min_value=0.0,
@@ -143,6 +148,21 @@ if entry > 0 and sl > 0:
 
         remaining_capital = capital - investment
 
+        # --------------------------
+        # Targets
+        # --------------------------
+        half_percent = entry * 0.005
+
+        if trade_type == "Buy":
+            t1 = entry + sl_points
+            t15 = entry + (sl_points * 1.5)
+            t2 = entry + (sl_points * 2)
+
+        else:
+            t1 = entry - sl_points
+            t15 = entry - (sl_points * 1.5)
+            t2 = entry - (sl_points * 2)
+
         # =====================================================
         # Results
         # =====================================================
@@ -160,6 +180,20 @@ if entry > 0 and sl > 0:
         with c2:
             st.metric("Capital Quantity", f"{int(qcapital)}")
             st.metric("Margin Quantity", f"{int(qmargin)}")
+
+        st.markdown("---")
+        st.subheader("🎯 Trade Targets")
+
+        c1, c2 = st.columns(2)
+
+        with c1:
+            st.metric("0.5% of Entry Price", f"₹ {half_percent:.2f}")
+            st.metric("SL Points", f"{sl_points:.2f}")
+
+        with c2:
+            st.metric("T1 (1R)", f"₹ {t1:.2f}")
+            st.metric("T1.5 (1.5R)", f"₹ {t15:.2f}")
+            st.metric("T2 (2R)", f"₹ {t2:.2f}")
 
         st.markdown("### ✅ Final Tradable Quantity")
 
