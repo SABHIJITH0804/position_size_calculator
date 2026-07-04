@@ -151,7 +151,7 @@ if entry > 0 and sl > 0:
         # --------------------------
         # Targets
         # --------------------------
-        half_percent = entry * 0.005
+        half_3_percent = entry * 0.003
 
         if trade_type == "Buy":
             t1 = entry + sl_points
@@ -187,7 +187,7 @@ if entry > 0 and sl > 0:
         c1, c2 = st.columns(2)
 
         with c1:
-            st.metric("0.5% of Entry Price", f"₹ {half_percent:.2f}")
+            st.metric("0.3% of Entry Price", f"₹ {half_3_percent:.2f}")
             st.metric("SL Points", f"{sl_points:.2f}")
 
         with c2:
