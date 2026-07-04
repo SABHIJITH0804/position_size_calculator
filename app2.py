@@ -15,13 +15,13 @@ st.markdown("---")
 # =====================================================
 
 if "capital" not in st.session_state:
-    st.session_state.capital = 100000.0
+    st.session_state.capital = 15000.0
 
 if "risk" not in st.session_state:
-    st.session_state.risk = 1000.0
+    st.session_state.risk = 200.0
 
 if "margin_mode" not in st.session_state:
-    st.session_state.margin_mode = "Delivery"
+    st.session_state.margin_mode = "Intraday"
 
 if "custom_margin" not in st.session_state:
     st.session_state.custom_margin = 25.0
@@ -94,6 +94,12 @@ sl = st.number_input(
     format="%.2f"
 )
 
+atr = st.number_input(
+    "ATR",
+    min_value=0.0,
+    format="%.2f"
+)
+
 # =====================================================
 # Calculations
 # =====================================================
@@ -151,7 +157,23 @@ if entry > 0 and sl > 0:
         # --------------------------
         # Targets
         # --------------------------
-        half_3_percent = entry * 0.003
+        # ------------------------------------------------
+        # ATR Based Percentage
+        # ------------------------------------------------
+
+        if margin_mode == "Intraday":
+            atr_multiplier = 1.5
+
+        elif margin_mode == "Delivery":
+            atr_multiplier = 2.0
+
+        else:
+            # Custom margin doesn't imply a trade style, so use the intraday multiplier by default.
+            atr_multiplier = 1.5
+
+        atr_percent = ((atr * atr_multiplier) / entry) * 100
+
+        atr_points = (atr_percent / 100) * entry
 
         if trade_type == "Buy":
             t1 = entry + sl_points
@@ -187,7 +209,10 @@ if entry > 0 and sl > 0:
         c1, c2 = st.columns(2)
 
         with c1:
-            st.metric("0.3% of Entry Price", f"₹ {half_3_percent:.2f}")
+            st.metric(
+                f"{atr_percent:.2f}% of Entry Price",
+                f"₹ {atr_points:.2f}"
+                )
             st.metric("SL Points", f"{sl_points:.2f}")
 
         with c2:
