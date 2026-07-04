@@ -196,6 +196,10 @@ if entry > 0 and sl > 0:
         c1, c2 = st.columns(2)
 
         with c1:
+            st.metric(
+                f"{atr_percent:.2f}% of Entry Price",
+                f"₹ {atr_points:.2f}"
+                )
             st.metric("Stop Loss Points", f"{sl_points:.2f}")
             st.metric("Risk Quantity", f"{int(qrisk)}")
 
