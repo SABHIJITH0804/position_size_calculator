@@ -179,11 +179,15 @@ if entry > 0 and sl > 0:
             t1 = entry + sl_points
             t15 = entry + (sl_points * 1.5)
             t2 = entry + (sl_points * 2)
+            t25 = entry + (sl_points * 2.5)
+            t3 = entry + (sl_points * 3)
 
         else:
             t1 = entry - sl_points
             t15 = entry - (sl_points * 1.5)
             t2 = entry - (sl_points * 2)
+            t25 = entry - (sl_points * 2.5)
+            t3 = entry - (sl_points * 3)
 
         # =====================================================
         # Results
@@ -223,6 +227,8 @@ if entry > 0 and sl > 0:
             st.metric("T1 (1R)", f"₹ {t1:.2f}")
             st.metric("T1.5 (1.5R)", f"₹ {t15:.2f}")
             st.metric("T2 (2R)", f"₹ {t2:.2f}")
+            st.metric("T2.5 (2.5R)", f"₹ {t25:.2f}")
+            st.metric("T3 (3R)", f"₹ {t3:.2f}")
 
         st.markdown("### ✅ Final Tradable Quantity")
 
