@@ -108,6 +108,8 @@ if entry > 0 and sl > 0:
 
     sl_points = abs(entry - sl)
 
+    sl_50_points = (entry * 0.5)/100
+
     if sl_points == 0:
         st.error("Entry Price and Stop Loss Price cannot be the same.")
 
@@ -203,6 +205,10 @@ if entry > 0 and sl > 0:
             st.metric(
                 f"{atr_percent:.2f}% of Entry Price",
                 f"₹ {atr_points:.2f}"
+                )
+            st.metric(
+                f"{0.50:.2f}% of Entry Price",
+                f"₹ {sl_50_points:.2f}"
                 )
             st.metric("Stop Loss Points", f"{sl_points:.2f}")
             st.metric("Risk Quantity", f"{int(qrisk)}")
