@@ -176,20 +176,39 @@ if entry > 0 and sl > 0:
         atr_percent = ((atr * atr_multiplier) / entry) * 100
 
         atr_points = (atr_percent / 100) * entry
-
+        
         if trade_type == "Buy":
             t1 = entry + sl_points
             t15 = entry + (sl_points * 1.5)
             t2 = entry + (sl_points * 2)
             t25 = entry + (sl_points * 2.5)
             t3 = entry + (sl_points * 3)
-
+            t35 = entry + (sl_points * 3.5)
+            t4 = entry + (sl_points * 4)
+            t45 = entry + (sl_points * 4.5)
+            t5 = entry + (sl_points * 5)
+            t55 = entry + (sl_points * 5.5)
+            t6 = entry + (sl_points * 6)
+            t65 = entry + (sl_points * 6.5)
+            t7 = entry + (sl_points * 7)
+            t75 = entry + (sl_points * 7.5)
+            t8 = entry + (sl_points * 8)
         else:
             t1 = entry - sl_points
             t15 = entry - (sl_points * 1.5)
             t2 = entry - (sl_points * 2)
             t25 = entry - (sl_points * 2.5)
             t3 = entry - (sl_points * 3)
+            t35 = entry - (sl_points * 3.5)
+            t4 = entry - (sl_points * 4)
+            t45 = entry - (sl_points * 4.5)
+            t5 = entry - (sl_points * 5)
+            t55 = entry - (sl_points * 5.5)
+            t6 = entry - (sl_points * 6)
+            t65 = entry - (sl_points * 6.5)
+            t7 = entry - (sl_points * 7)
+            t75 = entry - (sl_points * 7.5)
+            t8 = entry - (sl_points * 8)
 
         # =====================================================
         # Results
@@ -235,6 +254,16 @@ if entry > 0 and sl > 0:
             st.metric("T2 (2R)", f"₹ {t2:.2f}")
             st.metric("T2.5 (2.5R)", f"₹ {t25:.2f}")
             st.metric("T3 (3R)", f"₹ {t3:.2f}")
+            st.metric("T3.5 (3.5R)", f"₹ {t35:.2f}")
+            st.metric("T4 (4R)", f"₹ {t4:.2f}")
+            st.metric("T4.5 (4.5R)", f"₹ {t45:.2f}")
+            st.metric("T5 (5R)", f"₹ {t5:.2f}")
+            st.metric("T5.5 (5.5R)", f"₹ {t55:.2f}")
+            st.metric("T6 (6R)", f"₹ {t6:.2f}")
+            st.metric("T6.5 (6.5R)", f"₹ {t65:.2f}")
+            st.metric("T7 (7R)", f"₹ {t7:.2f}")
+            st.metric("T7.5 (7.5R)", f"₹ {t75:.2f}")
+            st.metric("T8 (8R)", f"₹ {t8:.2f}")
 
         st.markdown("### ✅ Final Tradable Quantity")
 
