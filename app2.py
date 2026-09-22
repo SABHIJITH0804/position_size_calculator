@@ -15,7 +15,7 @@ st.markdown("---")
 # =====================================================
 
 if "capital" not in st.session_state:
-    st.session_state.capital = 15000.0
+    st.session_state.capital = 50000.0
 
 if "risk" not in st.session_state:
     st.session_state.risk = 200.0
