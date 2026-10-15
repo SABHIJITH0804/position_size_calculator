@@ -175,7 +175,11 @@ if entry > 0 and sl > 0:
 
         atr_percent = ((atr * atr_multiplier) / entry) * 100
 
+        atr_percent_2 = ((atr * 2.0 ) / entry) * 100
+
         atr_points = (atr_percent / 100) * entry
+
+        atr_points_2 = (atr_percent_2 / 100) * entry
         
         if trade_type == "Buy":
             t1 = entry + sl_points
@@ -222,8 +226,12 @@ if entry > 0 and sl > 0:
 
         with c1:
             st.metric(
-                f"{atr_percent:.2f}% of Entry Price",
+                f"{atr_percent:.2f}% of Entry Price(1.5 multiplier)",
                 f"₹ {atr_points:.2f}"
+                )
+            st.metric(
+                f"{atr_percent_2:.2f}% of Entry Price(2 multiplier)",
+                f"₹ {atr_points_2:.2f}"
                 )
             st.metric(
                 f"{0.50:.2f}% of Entry Price",
@@ -245,6 +253,10 @@ if entry > 0 and sl > 0:
             st.metric(
                 f"{atr_percent:.2f}% of Entry Price",
                 f"₹ {atr_points:.2f}"
+                )
+            st.metric(
+                f"{atr_percent_2:.2f}% of Entry Price(2 multiplier)",
+                f"₹ {atr_points_2:.2f}"
                 )
             st.metric("SL Points", f"{sl_points:.2f}")
 
